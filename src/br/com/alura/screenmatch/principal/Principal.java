@@ -1,3 +1,5 @@
+package br.com.alura.screenmatch.principal;
+
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
@@ -5,21 +7,18 @@ import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Principal {
     public static void main(String[] args) {
 
 //      Filme 1
-        Filme filmeFav = new Filme();
-        filmeFav.setNome("The Matrix");
-        filmeFav.setAnoDeLancamento(1999);
+        Filme filmeFav = new Filme("The Matrix", 1999);
         filmeFav.setDuracaoMinutos(135);
         filmeFav.setIncluidoNoPlano(false);
 
 //      Serie 1
-        Serie serieFav = new Serie();
-        serieFav.setNome("Lost");
-        serieFav.setAnoDeLancamento(2004);
+        Serie serieFav = new Serie("Lost", 2004);
         serieFav.setIncluidoNoPlano(true);
         serieFav.setTemporadas(6);
         serieFav.setMinutosPorEpisodio(48);
@@ -27,28 +26,14 @@ public class Principal {
         serieFav.setEpisodiosPorTemporada(10);
 
 //      Filme 2
-        Filme outroFilme = new Filme();
-        outroFilme.setNome("GodFather");
-        outroFilme.setAnoDeLancamento(1972);
+        Filme outroFilme = new Filme("GodFather", 1972);
         outroFilme.setDuracaoMinutos(175);
         outroFilme.setIncluidoNoPlano(true);
 
-        Filme filmeDoPaulo  = new Filme();
-        filmeDoPaulo.setNome("Avatar");
-        filmeDoPaulo.setAnoDeLancamento(2023);
+        var filmeDoPaulo  = new Filme("Avatar", 2023);
         filmeDoPaulo.setDuracaoMinutos(195);
         filmeDoPaulo.setIncluidoNoPlano(true);
         filmeDoPaulo.avalia(10);
-
-        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
-        listaDeFilmes.add(filmeDoPaulo);
-        listaDeFilmes.add(filmeFav);
-        listaDeFilmes.add(outroFilme);
-
-        System.out.println("Tamanho da lista: " + listaDeFilmes.size());
-        System.out.println("Primeiro Filme: " + listaDeFilmes.get(0).getNome());
-        System.out.println("toString do Filme " + listaDeFilmes.get(0).toString());
-
 
         System.out.println("\n======================================");
         filmeFav.exibeFichaTecnica();
@@ -85,6 +70,13 @@ public class Principal {
         episodio.setSerie(serieFav);
         episodio.setTotalVizualizacoes(300);
 
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(filmeDoPaulo);
+        listaDeFilmes.add(filmeFav);
+        listaDeFilmes.add(outroFilme);
+        System.out.println("Tamanho da lista " + listaDeFilmes.size());
+        System.out.println("Primeiro filme " + listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
 
     }
 }
